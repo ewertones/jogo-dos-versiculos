@@ -5,7 +5,7 @@ from fastapi import FastAPI, Request, HTTPException, status
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse, JSONResponse, RedirectResponse
 
-app = FastAPI()
+app = FastAPI(docs_url=None, redoc_url=None)
 
 templates = Jinja2Templates(directory="templates")
 
@@ -19,8 +19,10 @@ def get_db_connection():
     return conn
 
 
-@app.get("/app", response_class=HTMLResponse)
-async def index(request: Request):
+@app.get("")
+@app.get("/")
+@app.get("/app")
+async def index(request: Request) -> HTMLResponse:
     conn = get_db_connection()
     metadata = {}
     cur = conn.execute("SELECT key, value FROM metadata")
