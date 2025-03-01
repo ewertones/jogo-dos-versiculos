@@ -68,6 +68,7 @@
                 font-size: 40px;
                 margin: 10px 0;
                 font-weight: 500;
+                transition: color 0.5s ease;
             }
         </style>
     </head>
@@ -90,15 +91,31 @@
 
             function startTimer() {
                 seconds = 0;
-                document.getElementById("timer").textContent = formatTime(seconds);
+                const timerElement = document.getElementById("timer");
+                timerElement.textContent = formatTime(seconds);
+                timerElement.style.color = "gray";
                 timerInterval = setInterval(() => {
                     seconds++;
-                    document.getElementById("timer").textContent = formatTime(seconds);
+                    timerElement.textContent = formatTime(seconds);
+                    updateTimerColor(seconds);
                 }, 1000);
             }
 
             function stopTimer() {
                 clearInterval(timerInterval);
+            }
+
+            function updateTimerColor(sec) {
+                const timerElement = document.getElementById("timer");
+                if (sec < 20) {
+                    timerElement.style.color = "gray";
+                } else if (sec < 25) {
+                    timerElement.style.color = "#BA8E23";
+                } else if (sec < 30) {
+                    timerElement.style.color = "tomato";
+                } else {
+                    timerElement.style.color = "red";
+                }
             }
 
             async function loadVerse() {
