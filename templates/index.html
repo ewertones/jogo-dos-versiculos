@@ -18,8 +18,11 @@
                 justify-content: center;
                 min-height: 100vh;
             }
+            h1 {
+                font-size: 50px;
+            }
             .container {
-                max-width: 600px;
+                max-width: min(1000px, 90%);
                 width: 90%;
                 padding: 2rem;
                 border-radius: 8px;
@@ -27,10 +30,10 @@
                 text-align: center;
             }
             blockquote {
-                border-left: 3px solid #ccc;
-                font-size: 1.5em;
-                margin: 1.5rem 0 1.5rem 0;
-                padding: 1rem;
+                border-left: 10px solid #ccc;
+                font-size: 50px;
+                margin: 5rem 0 5rem 0;
+                padding: 2rem;
                 font-weight: 100;
                 line-height: 160%;
                 text-align: left;
@@ -39,8 +42,9 @@
                 display: inline-block;
             }
             .reference {
-                font-size: 1.2em;
+                font-size: 40px;
                 color: #555;
+                margin: 2rem 0 5rem 0;
                 padding: 1rem;
                 font-weight: 500;
                 text-align: end;
@@ -49,9 +53,10 @@
                 background-color: #007bff;
                 color: #fff;
                 border: none;
-                padding: 12px 24px;
-                font-size: 1em;
-                border-radius: 4px;
+                margin: 2rem;
+                padding: 1.5rem;
+                font-size: 50px;
+                border-radius: 1rem;
                 cursor: pointer;
                 margin: 20px;
                 transition: background-color 0.3s ease;
@@ -60,7 +65,7 @@
                 background-color: #0056b3;
             }
             #timer {
-                font-size: 1.2em;
+                font-size: 40px;
                 margin: 10px 0;
                 font-weight: 500;
             }
@@ -113,7 +118,7 @@
             async function displayVerse() {
                 const appDiv = document.getElementById("app");
                 appDiv.innerHTML = `
-    <blockquote class="verse" id="verseText"></blockquote>
+    <blockquote class="verse" id="verseText">...</blockquote>
     <div id="timer">00:00</div>
     <button id="revealBtn">Revelar</button>
     <button id="nextBtn" style="display:none;">Próximo</button>
